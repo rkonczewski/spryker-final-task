@@ -4,11 +4,16 @@ namespace Pyz\Zed\Faq\Communication\Table;
 
 use Orm\Zed\Faq\Persistence\Map\PyzFaqTableMap;
 use Orm\Zed\Faq\Persistence\PyzFaqQuery;
+use Spryker\Service\UtilText\Model\Url\Url;
 use Spryker\Zed\Gui\Communication\Table\AbstractTable;
 use Spryker\Zed\Gui\Communication\Table\TableConfiguration;
 
 class FaqTable extends AbstractTable
 {
+    /**
+     * @var string
+     */
+    public const ACTION = 'Actions';
     /**
      * @var PyzFaqQuery
      */
@@ -34,6 +39,7 @@ class FaqTable extends AbstractTable
             PyzFaqTableMap::COL_QUESTION => 'Question',
             PyzFaqTableMap::COL_ANSWER => 'Answer',
             PyzFaqTableMap::COL_IS_ACTIVE => 'Active',
+            static::ACTION => 'Actions',
         ]);
 
         $config->setSortable([
@@ -44,6 +50,8 @@ class FaqTable extends AbstractTable
         $config->setSearchable([
             PyzFaqTableMap::COL_QUESTION,
         ]);
+
+        $config->setRawColumns([static::ACTION]);
 
         return $config;
     }
@@ -64,6 +72,28 @@ class FaqTable extends AbstractTable
                 PyzFaqTableMap::COL_QUESTION => $faqDataItem[PyzFaqTableMap::COL_QUESTION],
                 PyzFaqTableMap::COL_ANSWER => $faqDataItem[PyzFaqTableMap::COL_ANSWER],
                 PyzFaqTableMap::COL_IS_ACTIVE => $faqDataItem[PyzFaqTableMap::COL_IS_ACTIVE],
+                static::ACTION => $this->generateEditButton(
+                        Url::generate('/faq/edit/', [
+                            'id-faq' => $faqDataItem[PyzFaqTableMap::COL_ID_QUESTION],
+                        ]),
+                        'Edit'
+                    ) . $this->generateRemoveButton(
+                        Url::generate(
+                            '/faq/delete',
+                            [
+                                'id-faq' => $faqDataItem[PyzFaqTableMap::COL_ID_QUESTION],
+                            ]
+                        ),
+                        'Delete'
+                    ) . $this->generateViewButton(
+                        Url::generate(
+                            '/faq/status',
+                            [
+                                'id-faq' => $faqDataItem[PyzFaqTableMap::COL_ID_QUESTION],
+                            ]
+                        ),
+                        'Change Status'
+                    )
             ];
         }
         return $faqTableRows;

@@ -2,6 +2,10 @@
 
 {% set widget_title = '(FAQ) Frequently Asked Questions' %}
 
+{% block action %}
+    {{ createActionButton('/faq/create', 'Create') }}
+{% endblock %}
+
 {% block head_title widget_title %}
 {% block section_title widget_title %}
 
