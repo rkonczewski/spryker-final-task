@@ -2,6 +2,7 @@
 
 namespace Pyz\Zed\Faq\Business;
 
+use Generated\Shared\Transfer\FaqCollectionTransfer;
 use Generated\Shared\Transfer\FaqTransfer;
 
 interface FaqFacadeInterface
@@ -18,4 +19,10 @@ interface FaqFacadeInterface
      * @return mixed
      */
     public function deleteFaqEntity(FaqTransfer $faqTransfer);
+
+    /**
+     * @param FaqCollectionTransfer $faqsRestApiTransfer
+     * @return FaqCollectionTransfer
+     */
+    public function getFaqCollection(FaqCollectionTransfer $faqsRestApiTransfer): FaqCollectionTransfer;
 }
