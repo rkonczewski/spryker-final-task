@@ -267,6 +267,9 @@ class ConsoleDependencyProvider extends SprykerConsoleDependencyProvider
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION),
             new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . ProductRelationDataImportConfig::IMPORT_TYPE_PRODUCT_RELATION_STORE),
 
+            //administration data importers
+            new DataImportConsole(DataImportConsole::DEFAULT_NAME . ':' . DataImportConfig::IMPORT_TYPE_FAQ),
+
             // Publish and Synchronization
             new EventBehaviorTriggerTimeoutConsole(),
             new PublisherTriggerEventsConsole(),
