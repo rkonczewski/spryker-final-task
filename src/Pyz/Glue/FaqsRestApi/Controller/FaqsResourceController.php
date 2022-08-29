@@ -2,6 +2,7 @@
 
 namespace Pyz\Glue\FaqsRestApi\Controller;
 
+use Generated\Shared\Transfer\FaqTransfer;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 use Spryker\Glue\Kernel\Controller\AbstractController;
@@ -20,5 +21,14 @@ class FaqsResourceController extends AbstractController
         return $this->getFactory()
             ->createFaqsReader()
             ->getFaqs($restRequest);
+    }
+
+    public function deleteAction(RestRequestInterface $restRequest): RestResponseInterface
+    {
+        $faqId = (new FaqTransfer())->setIdQuestion($restRequest->getResource()->getId());
+
+        return $this->getFactory()
+            ->createFaqsDeleter()
+            ->delete($restRequest, $faqId);
     }
 }
