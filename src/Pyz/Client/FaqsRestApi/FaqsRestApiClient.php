@@ -3,6 +3,7 @@
 namespace Pyz\Client\FaqsRestApi;
 
 use Generated\Shared\Transfer\FaqCollectionTransfer;
+use Generated\Shared\Transfer\FaqTransfer;
 use Spryker\Client\Kernel\AbstractClient;
 use Spryker\Client\Kernel\Exception\Container\ContainerKeyNotFoundException;
 
@@ -21,5 +22,17 @@ class FaqsRestApiClient extends AbstractClient implements FaqsRestApiClientInter
         return $this->getFactory()
             ->createFaqZedStub()
             ->getfaqCollection($faqCollectionTransfer);
+    }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     * @throws ContainerKeyNotFoundException
+     */
+    public function deleteFaqItem(FaqTransfer $faqTransfer): FaqTransfer
+    {
+        return $this->getFactory()
+            ->createFaqZedStub()
+            ->deleteFaqItem($faqTransfer);
     }
 }

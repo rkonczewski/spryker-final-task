@@ -3,7 +3,9 @@
 namespace Pyz\Client\FaqsRestApi\Zed;
 
 use Generated\Shared\Transfer\FaqCollectionTransfer;
+use Generated\Shared\Transfer\FaqTransfer;
 use Spryker\Client\ZedRequest\ZedRequestClientInterface;
+use Spryker\Shared\Kernel\Transfer\TransferInterface;
 
 class FaqsRestApiZedStub implements FaqsRestApiZedStubInterface
 {
@@ -34,5 +36,19 @@ class FaqsRestApiZedStub implements FaqsRestApiZedStubInterface
             $faqCollectionTransfer
         );
         return $faqCollectionTransfer;
+    }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return TransferInterface
+     */
+    public function deleteFaqItem(FaqTransfer $faqTransfer)
+    {
+        $faqTransfer = $this->zedRequestClient->call(
+            '/faq/gateway/delete-faq-item',
+            $faqTransfer
+        );
+
+        return $faqTransfer;
     }
 }

@@ -3,6 +3,7 @@
 namespace Pyz\Client\FaqsRestApi\Zed;
 
 use Generated\Shared\Transfer\FaqCollectionTransfer;
+use Generated\Shared\Transfer\FaqTransfer;
 
 interface FaqsRestApiZedStubInterface
 {
@@ -11,4 +12,10 @@ interface FaqsRestApiZedStubInterface
      * @return FaqCollectionTransfer
      */
     public function getFaqCollection(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer;
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return mixed
+     */
+    public function deleteFaqItem(FaqTransfer $faqTransfer);
 }
