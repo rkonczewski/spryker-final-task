@@ -22,8 +22,8 @@ class FaqsResourceRoutePlugin extends AbstractPlugin implements ResourceRoutePlu
     ): ResourceRouteCollectionInterface {
         $resourceRouteCollection->addGet('get', false)
             ->addDelete('delete', false)
-            ->addPost('post', true);
-        //todo: change false to true when need protect
+            ->addPost('post', true)
+            ->addPatch('path', false);
 
         return $resourceRouteCollection;
     }

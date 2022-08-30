@@ -31,4 +31,10 @@ interface FaqsRestApiClientInterface
      * @return mixed
      */
     public function getFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     */
+    public function updateFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
 }

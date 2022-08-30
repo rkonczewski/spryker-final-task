@@ -77,4 +77,18 @@ class FaqsRestApiZedStub implements FaqsRestApiZedStubInterface
         );
         return $faqTransfer;
     }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return TransferInterface
+     */
+    public function updateFaqItem(FaqTransfer $faqTransfer)
+    {
+        $faqTransfer = $this->zedRequestClient->call(
+            '/faq/gateway/update-faq-item',
+            $faqTransfer
+        );
+
+        return $faqTransfer;
+    }
 }

@@ -8,6 +8,8 @@ use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsDeleter;
 use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsDeleterInterface;
 use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsReader;
 use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsReaderInterface;
+use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsUpdater;
+use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsUpdaterInterface;
 use Pyz\Glue\FaqsRestApi\Processor\Mapper\FaqsResourceMapper;
 use Spryker\Glue\Kernel\AbstractFactory;
 
@@ -55,7 +57,17 @@ class FaqsRestApiFactory extends AbstractFactory
         return new FaqsCreator(
             $this->getClient(),
             $this->getResourceBuilder(),
-            $this->createFaqsResourceMapper(),
+        );
+    }
+
+    /**
+     * @return FaqsUpdaterInterface
+     */
+    public function createFaqsUpdater(): FaqsUpdaterInterface
+    {
+        return new FaqsUpdater(
+            $this->getClient(),
+            $this->getResourceBuilder(),
         );
     }
 }
