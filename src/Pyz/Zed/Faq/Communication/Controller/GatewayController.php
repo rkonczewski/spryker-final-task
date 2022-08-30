@@ -27,4 +27,15 @@ class GatewayController extends AbstractGatewayController
 
         return $faqTransfer;
     }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     */
+    public function createFaqItemAction(FaqTransfer $faqTransfer): FaqTransfer
+    {
+        $this->getFacade()->createFaqEntity($faqTransfer);
+
+        return $faqTransfer;
+    }
 }

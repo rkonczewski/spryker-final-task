@@ -31,4 +31,17 @@ class FaqsResourceController extends AbstractController
             ->createFaqsDeleter()
             ->delete($restRequest, $faqId);
     }
+
+    /**
+     * @param RestRequestInterface $restRequest
+     * @return RestResponseInterface
+     */
+    public function createAction(RestRequestInterface $restRequest): RestResponseInterface
+    {
+        $faqTransfer = (new FaqTransfer())->fromArray($restRequest->getResource()->toArray());
+
+        return $this->getFactory()
+            ->createFaqsCreator()
+            ->create($restRequest, $faqTransfer);
+    }
 }

@@ -2,6 +2,8 @@
 
 namespace Pyz\Glue\FaqsRestApi;
 
+use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsCreator;
+use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsCreatorInterface;
 use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsDeleter;
 use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsDeleterInterface;
 use Pyz\Glue\FaqsRestApi\Processor\Faqs\FaqsReader;
@@ -42,6 +44,18 @@ class FaqsRestApiFactory extends AbstractFactory
         return new FaqsDeleter(
             $this->getClient(),
             $this->getResourceBuilder(),
+        );
+    }
+
+    /**
+     * @return FaqsCreatorInterface
+     */
+    public function createFaqsCreator(): FaqsCreatorInterface
+    {
+        return new FaqsCreator(
+            $this->getClient(),
+            $this->getResourceBuilder(),
+            $this->createFaqsResourceMapper(),
         );
     }
 }
