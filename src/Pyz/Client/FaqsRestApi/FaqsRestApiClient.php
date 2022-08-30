@@ -47,4 +47,16 @@ class FaqsRestApiClient extends AbstractClient implements FaqsRestApiClientInter
             ->createFaqZedStub()
             ->createFaqItem($faqTransfer);
     }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     * @throws ContainerKeyNotFoundException
+     */
+    public function getFaqItem(FaqTransfer $faqTransfer): FaqTransfer
+    {
+        return $this->getFactory()
+            ->createFaqZedStub()
+            ->getFaqItem($faqTransfer);
+    }
 }

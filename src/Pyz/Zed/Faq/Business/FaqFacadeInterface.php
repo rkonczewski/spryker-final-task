@@ -25,4 +25,11 @@ interface FaqFacadeInterface
      * @return FaqCollectionTransfer
      */
     public function getFaqCollection(FaqCollectionTransfer $faqsRestApiTransfer): FaqCollectionTransfer;
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer|null
+     */
+    public function getFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
+
 }

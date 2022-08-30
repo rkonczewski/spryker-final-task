@@ -18,11 +18,23 @@ class FaqsResourceController extends AbstractController
      */
     public function getAction(RestRequestInterface $restRequest): RestResponseInterface
     {
+        $idFaq = $restRequest->getResource()->getId();
+
+        if (!$idFaq) {
+            return $this->getFactory()
+                ->createFaqsReader()
+                ->getFaqs($restRequest);
+        }
+
         return $this->getFactory()
             ->createFaqsReader()
-            ->getFaqs($restRequest);
+            ->getFaqItem($restRequest, $idFaq);
     }
 
+    /**
+     * @param RestRequestInterface $restRequest
+     * @return RestResponseInterface
+     */
     public function deleteAction(RestRequestInterface $restRequest): RestResponseInterface
     {
         $faqId = (new FaqTransfer())->setIdQuestion($restRequest->getResource()->getId());

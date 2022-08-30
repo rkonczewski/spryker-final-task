@@ -6,6 +6,9 @@ use Generated\Shared\Transfer\FaqCollectionTransfer;
 use Generated\Shared\Transfer\FaqTransfer;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
+/**
+ * @method \Pyz\Zed\Faq\Business\FaqFacadeInterface getFacade()
+ */
 class GatewayController extends AbstractGatewayController
 {
     /**
@@ -35,6 +38,17 @@ class GatewayController extends AbstractGatewayController
     public function createFaqItemAction(FaqTransfer $faqTransfer): FaqTransfer
     {
         $this->getFacade()->createFaqEntity($faqTransfer);
+
+        return $faqTransfer;
+    }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     */
+    public function getFaqItemAction(FaqTransfer $faqTransfer): FaqTransfer
+    {
+        $this->getFacade()->getFaqItem($faqTransfer);
 
         return $faqTransfer;
     }
