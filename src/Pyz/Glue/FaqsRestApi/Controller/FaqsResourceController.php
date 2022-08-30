@@ -48,7 +48,7 @@ class FaqsResourceController extends AbstractController
      * @param RestRequestInterface $restRequest
      * @return RestResponseInterface
      */
-    public function createAction(RestRequestInterface $restRequest): RestResponseInterface
+    public function postAction(RestRequestInterface $restRequest): RestResponseInterface
     {
         $faqTransfer = (new FaqTransfer())->fromArray($restRequest->getResource()->toArray());
 
@@ -61,7 +61,7 @@ class FaqsResourceController extends AbstractController
      * @param RestRequestInterface $restRequest
      * @return RestResponseInterface
      */
-    public function updateAction(RestRequestInterface $restRequest): RestResponseInterface
+    public function patchAction(RestRequestInterface $restRequest): RestResponseInterface
     {
         $faqTransfer = (new FaqTransfer())->fromArray($restRequest->getResource()->getAttributes()->toArray())
             ->setIdQuestion($restRequest->getResource()->getId());
