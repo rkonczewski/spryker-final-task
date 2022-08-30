@@ -18,4 +18,22 @@ interface FaqsRestApiZedStubInterface
      * @return mixed
      */
     public function deleteFaqItem(FaqTransfer $faqTransfer);
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return mixed
+     */
+    public function createFaqItem(FaqTransfer $faqTransfer);
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return mixed
+     */
+    public function getFaqItem(FaqTransfer $faqTransfer);
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return mixed
+     */
+    public function updateFaqItem(FaqTransfer $faqTransfer);
 }

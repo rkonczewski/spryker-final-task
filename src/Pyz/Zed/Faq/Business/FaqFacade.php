@@ -54,4 +54,15 @@ class FaqFacade extends AbstractFacade implements FaqFacadeInterface
             ->createFaqReader()
             ->getFaqCollection($faqsRestApiTransfer);
     }
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     */
+    public function getFaqItem(FaqTransfer $faqTransfer): FaqTransfer
+    {
+        $faq = $this->findFaqById($faqTransfer->getIdQuestion());
+
+        return $faqTransfer->fromArray($faq->toArray());
+    }
 }

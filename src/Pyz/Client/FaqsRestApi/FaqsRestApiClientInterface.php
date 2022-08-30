@@ -17,5 +17,24 @@ interface FaqsRestApiClientInterface
      * @param FaqTransfer $faqTransfer
      * @return FaqTransfer
      */
-    public function deleteFaqItem(FaqTransfer $faqTransfer):FaqTransfer;
+    public function deleteFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     *
+     */
+    public function createFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return mixed
+     */
+    public function getFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
+
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     */
+    public function updateFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
 }

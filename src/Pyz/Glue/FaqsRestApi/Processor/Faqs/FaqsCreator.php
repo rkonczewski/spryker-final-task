@@ -5,11 +5,13 @@ namespace Pyz\Glue\FaqsRestApi\Processor\Faqs;
 use Generated\Shared\Transfer\FaqTransfer;
 use Generated\Shared\Transfer\RestErrorMessageTransfer;
 use Pyz\Client\FaqsRestApi\FaqsRestApiClientInterface;
+use Pyz\Glue\FaqsRestApi\Processor\Mapper\FaqsResourceMapper;
+use Pyz\Glue\FaqsRestApi\Processor\Mapper\FaqsResourceMapperInterface;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResourceBuilderInterface;
 use Spryker\Glue\GlueApplication\Rest\JsonApi\RestResponseInterface;
 use Spryker\Glue\GlueApplication\Rest\Request\Data\RestRequestInterface;
 
-class FaqsDeleter implements FaqsDeleterInterface
+class FaqsCreator implements FaqsCreatorInterface
 {
     /**
      * @var FaqsRestApiClientInterface
@@ -19,17 +21,25 @@ class FaqsDeleter implements FaqsDeleterInterface
      * @var RestResourceBuilderInterface
      */
     private RestResourceBuilderInterface $restResourceBuilder;
+    /**
+     * @var FaqsResourceMapper
+     */
+    private FaqsResourceMapper $faqsResourceMapper;
 
     /**
      * @param FaqsRestApiClientInterface $faqsRestApiClient
      * @param RestResourceBuilderInterface $restResourceBuilder
+     * @param FaqsResourceMapperInterface $faqsResourceMapper
      */
     public function __construct(
         FaqsRestApiClientInterface $faqsRestApiClient,
-        RestResourceBuilderInterface $restResourceBuilder
+        RestResourceBuilderInterface $restResourceBuilder,
+        FaqsResourceMapperInterface $faqsResourceMapper
+
     ) {
         $this->faqsRestApiClient = $faqsRestApiClient;
         $this->restResourceBuilder = $restResourceBuilder;
+        $this->faqsResourceMapper = $faqsResourceMapper;
     }
 
     /**
@@ -37,20 +47,20 @@ class FaqsDeleter implements FaqsDeleterInterface
      * @param FaqTransfer $faqTransfer
      * @return RestResponseInterface
      */
-    public function delete(RestRequestInterface $restRequest, FaqTransfer $faqTransfer): RestResponseInterface
+    public function create(RestRequestInterface $restRequest, FaqTransfer $faqTransfer): RestResponseInterface
     {
         $restResponse = $this->restResourceBuilder->createRestResponse();
 
-        $faqDelete = $this->faqsRestApiClient->deleteFaqItem($faqTransfer);
+        $faqCreate = $this->faqsRestApiClient->createFaqItem($faqTransfer);
 
-        if (!$faqDelete) {
+        if (!$faqCreate) {
             return $restResponse->addError(
                 (new RestErrorMessageTransfer())->setDetail('Error occurs.')
                     ->setStatus(500)
             );
         }
         return $restResponse->addError(
-            (new RestErrorMessageTransfer())->setDetail('Faq deleted.')
+            (new RestErrorMessageTransfer())->setDetail('Faq was created.')
                 ->setStatus('200')
         );
     }

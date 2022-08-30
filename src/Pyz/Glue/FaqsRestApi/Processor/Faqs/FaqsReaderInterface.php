@@ -12,4 +12,11 @@ interface FaqsReaderInterface
      * @return RestResponseInterface
      */
     public function getFaqs(RestRequestInterface $restRequest): RestResponseInterface;
+
+    /**
+     * @param RestRequestInterface $restRequest
+     * @param $idQuestion
+     * @return RestResponseInterface
+     */
+    public function getFaqItem(RestRequestInterface $restRequest, $idQuestion): RestResponseInterface;
 }
