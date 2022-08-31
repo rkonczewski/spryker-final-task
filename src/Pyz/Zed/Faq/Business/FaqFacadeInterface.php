@@ -32,4 +32,10 @@ interface FaqFacadeInterface
      */
     public function getFaqItem(FaqTransfer $faqTransfer): FaqTransfer;
 
+    /**
+     * @param FaqCollectionTransfer $faqCollectionTransfer
+     * @return FaqCollectionTransfer
+     */
+    public function getFaqCollectionActive(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer
+    ;
 }

@@ -53,10 +53,25 @@ class GatewayController extends AbstractGatewayController
         return $faqTransfer;
     }
 
+    /**
+     * @param FaqTransfer $faqTransfer
+     * @return FaqTransfer
+     */
     public function updateFaqItemAction(FaqTransfer $faqTransfer): FaqTransfer
     {
         $this->getFacade()->createFaqEntity($faqTransfer);
 
         return $faqTransfer;
+    }
+
+    /**
+     * @param FaqCollectionTransfer $faqCollectionTransfer
+     * @return FaqCollectionTransfer
+     */
+    public function getFaqCollectionActiveAction(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer
+    {
+        $this->getFacade()->getFaqCollectionActive($faqCollectionTransfer);
+
+        return $faqCollectionTransfer;
     }
 }
