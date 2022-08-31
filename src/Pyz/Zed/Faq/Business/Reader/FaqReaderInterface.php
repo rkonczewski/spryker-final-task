@@ -19,4 +19,10 @@ interface FaqReaderInterface
      */
     public function getFaqCollection(FaqCollectionTransfer $faqsRestApiTransfer): FaqCollectionTransfer;
 
+    /**
+     * @param FaqCollectionTransfer $faqCollectionTransfer
+     * @return FaqCollectionTransfer
+     */
+    public function getFaqCollectionActive(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer;
+
 }

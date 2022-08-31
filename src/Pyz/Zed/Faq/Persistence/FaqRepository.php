@@ -7,6 +7,7 @@ use Generated\Shared\Transfer\FaqTransfer;
 use Orm\Zed\Faq\Persistence\PyzFaq;
 use Orm\Zed\Faq\Persistence\PyzFaqQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
+use Spryker\Zed\Propel\Business\Exception\AmbiguousComparisonException;
 
 class FaqRepository extends AbstractRepository implements FaqRepositoryInterface
 {
@@ -55,6 +56,24 @@ class FaqRepository extends AbstractRepository implements FaqRepositoryInterface
         }
 
         return $faqsRestApiTransfer;
+    }
+
+    /**
+     * @param FaqCollectionTransfer $faqCollectionTransfer
+     * @return FaqCollectionTransfer
+     * @throws AmbiguousComparisonException
+     */
+    public function getFaqCollectionActive(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer
+    {
+        $faqCollectionActive = $this->createPyzFaqQuery()
+            ->filterByIsActive(true)
+            ->find();
+
+        foreach ($faqCollectionActive as $faqEntity) {
+            $faqTransfer = (new FaqTransfer())->fromArray($faqEntity->toArray());
+            $faqCollectionTransfer->addFaq($faqTransfer);
+        }
+        return $faqCollectionTransfer;
     }
 
 }
