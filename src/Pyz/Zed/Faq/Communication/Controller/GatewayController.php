@@ -4,6 +4,7 @@ namespace Pyz\Zed\Faq\Communication\Controller;
 
 use Generated\Shared\Transfer\FaqCollectionTransfer;
 use Generated\Shared\Transfer\FaqTransfer;
+use Generated\Shared\Transfer\FaqVoteTransfer;
 use Spryker\Zed\Kernel\Communication\Controller\AbstractGatewayController;
 
 /**
@@ -73,5 +74,16 @@ class GatewayController extends AbstractGatewayController
         $this->getFacade()->getFaqCollectionActive($faqCollectionTransfer);
 
         return $faqCollectionTransfer;
+    }
+
+    /**
+     * @param FaqVoteTransfer $faqVoteTransfer
+     * @return FaqVoteTransfer
+     */
+    public function faqVoteAction(FaqVoteTransfer $faqVoteTransfer): FaqVoteTransfer
+    {
+        $this->getFacade()->createFaqVote($faqVoteTransfer);
+
+        return $faqVoteTransfer;
     }
 }
