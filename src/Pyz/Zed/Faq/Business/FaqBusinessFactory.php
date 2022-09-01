@@ -8,6 +8,8 @@ use Pyz\Zed\Faq\Business\Deleter\FaqDeleter;
 use Pyz\Zed\Faq\Business\Deleter\FaqDeleterInterface;
 use Pyz\Zed\Faq\Business\Reader\FaqReader;
 use Pyz\Zed\Faq\Business\Reader\FaqReaderInterface;
+use Pyz\Zed\Faq\Business\VoteCreator\FaqVoteCreator;
+use Pyz\Zed\Faq\Business\VoteCreator\FaqVoteCreatorInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
@@ -38,5 +40,13 @@ class FaqBusinessFactory extends AbstractBusinessFactory
     public function createFaqDeleter(): FaqDeleterInterface
     {
         return new FaqDeleter($this->getEntityManager());
+    }
+
+    /**
+     * @return FaqVoteCreatorInterface
+     */
+    public function createFaqVoteCreator(): FaqVoteCreatorInterface
+    {
+        return new FaqVoteCreator($this->getEntityManager());
     }
 }

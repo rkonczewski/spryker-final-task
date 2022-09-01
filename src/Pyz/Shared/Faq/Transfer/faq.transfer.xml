@@ -6,8 +6,15 @@
         <property name="idQuestion" type="int"/>
         <property name="question" type="string"/>
         <property name="answer" type="string"/>
+        <property name="idVote" type="int"/>
         <property name="isActive" type="string"/>
         <property name="createdAt" type="timestamp"/>
         <property name="updatedAt" type="timestamp"/>
+    </transfer>
+
+    <transfer name="FaqVote">
+        <property name="idVote" type="int"/>
+        <property name="idQuestion" type="int"/>
+        <property name="votes" type="int"/>
     </transfer>
 </transfers>

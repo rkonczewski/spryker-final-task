@@ -12,7 +12,14 @@
         <div>
             {% for question in data.questions %}
                 <h4>{{ question.question }}</h4>
-                <h5>{{ question.answer }}</h5>
+                <h4>{{ question.answer }}</h4>
+                <h6>Faq Rating: {{ question.id_vote }}</h6>
+                <form action="/faq/vote" method="post">
+                    <div style="min-width: 90px;">
+                        <button class="btn btn-success" name="id-faq-up" value="{{ question.id_question }}">Vote Up</button>
+                        <button class="btn btn-danger" name="id-faq-down" value="{{ question.id_question }}">Vote down</button>
+                    </div>
+                </form>
             {% endfor %}
         </div>
     </div>

@@ -21,25 +21,18 @@ class FaqsCreator implements FaqsCreatorInterface
      * @var RestResourceBuilderInterface
      */
     private RestResourceBuilderInterface $restResourceBuilder;
-    /**
-     * @var FaqsResourceMapper
-     */
-    private FaqsResourceMapper $faqsResourceMapper;
 
     /**
      * @param FaqsRestApiClientInterface $faqsRestApiClient
      * @param RestResourceBuilderInterface $restResourceBuilder
-     * @param FaqsResourceMapperInterface $faqsResourceMapper
      */
     public function __construct(
         FaqsRestApiClientInterface $faqsRestApiClient,
-        RestResourceBuilderInterface $restResourceBuilder,
-        FaqsResourceMapperInterface $faqsResourceMapper
+        RestResourceBuilderInterface $restResourceBuilder
 
     ) {
         $this->faqsRestApiClient = $faqsRestApiClient;
         $this->restResourceBuilder = $restResourceBuilder;
-        $this->faqsResourceMapper = $faqsResourceMapper;
     }
 
     /**

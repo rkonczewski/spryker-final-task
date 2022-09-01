@@ -50,7 +50,7 @@ class FaqsResourceController extends AbstractController
      */
     public function postAction(RestRequestInterface $restRequest): RestResponseInterface
     {
-        $faqTransfer = (new FaqTransfer())->fromArray($restRequest->getResource()->toArray());
+        $faqTransfer = (new FaqTransfer())->fromArray($restRequest->getResource()->getAttributes()->toArray());
 
         return $this->getFactory()
             ->createFaqsCreator()

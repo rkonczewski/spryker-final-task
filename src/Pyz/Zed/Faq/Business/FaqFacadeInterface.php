@@ -4,6 +4,7 @@ namespace Pyz\Zed\Faq\Business;
 
 use Generated\Shared\Transfer\FaqCollectionTransfer;
 use Generated\Shared\Transfer\FaqTransfer;
+use Generated\Shared\Transfer\FaqVoteTransfer;
 
 interface FaqFacadeInterface
 {
@@ -36,6 +37,12 @@ interface FaqFacadeInterface
      * @param FaqCollectionTransfer $faqCollectionTransfer
      * @return FaqCollectionTransfer
      */
-    public function getFaqCollectionActive(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer
-    ;
+    public function getFaqCollectionActive(FaqCollectionTransfer $faqCollectionTransfer): FaqCollectionTransfer;
+
+    /**
+     * @param FaqVoteTransfer $faqVoteTransfer
+     * @return FaqVoteTransfer
+     */
+    public function createFaqVote(FaqVoteTransfer $faqVoteTransfer): FaqVoteTransfer;
+
 }
