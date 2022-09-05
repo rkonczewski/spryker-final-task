@@ -31,7 +31,6 @@ class EditController extends AbstractController
             ->setIdQuestion($idFaq)
             ->setQuestion($faq->getQuestion())
             ->setAnswer($faq->getAnswer());
-
         $faqForm = $this->getFactory()
             ->createFaqForm($faqTransfer)
             ->handleRequest($request);

@@ -12,7 +12,7 @@
         <column name="answer" type="VARCHAR"
                 size="255"/>
         <column name="id_vote" type="INTEGER"/>
-        <column name="is_active" default="true" type="BOOLEAN"/>
+        <column name="is_active" default="false" type="BOOLEAN"/>
         <behavior name="timestampable"/>
 
         <foreign-key foreignTable="pyz_faq_vote">
